@@ -1,6 +1,6 @@
 <?php
-class ControllerBlogBlog extends Controller{
+class ControllerExtensionModuleBlog extends Controller{
   public function index(){
-    
+    echo "How are you?"
   }
 }

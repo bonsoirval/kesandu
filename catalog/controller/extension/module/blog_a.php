@@ -1,8 +1,9 @@
 <?php
-class ControllerExtensionModuleBlog extends Controller {
+class ControllerExtensionModuleBlogA extends Controller {
 	private $error = array();
 
 	public function index() {
+
 		$this->load->language('extension/module/blog');
 		$this->load->model('setting/setting');
 
@@ -44,7 +45,15 @@ class ControllerExtensionModuleBlog extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
+
 		$this->response->setOutput($this->load->view('extension/module/blog', $data));
-		
+	}
+
+	protected function validate(){
+		if (! $this->user->hasPermission('modiy', 'extension/module/blog')){
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		return !$this->error;
 	}
 }
