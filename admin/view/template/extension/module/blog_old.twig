@@ -1,0 +1,248 @@
+{{ header }}{{ column_left }}
+    <div id="content">
+    <div class="page-header">
+      <div class="container-fluid">
+        <div class="pull-right">
+          <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+          <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+        <h1>{{ heading_title }}</h1>
+        <ul class="breadcrumb">
+          {% for breadcrumb in breadcrumbs %}
+          <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+
+      <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+      <style>
+         body {
+         color: #444;
+         }
+         label {
+         font-family: 'Impact';
+         color: #666;
+         font-size: 18px;
+         cursor: pointer;
+         padding: 0.8em 1em 0.8em 0;
+         }
+         label:hover {
+         color: purple;
+         }
+         label:hover:before {
+         background: #ff6cff;
+         }
+         label:before {
+         font-family: 'Impact';
+         text-align: center;
+         content: counter(li);
+         border: 10px solid purple;
+         border-radius: 40px;
+         display: inline-block;
+         width: 40px;
+         height: 40px;
+         line-height: 40px;
+         font-size: 24px;
+         margin: 0 0.5em 0 0;
+         background: white;
+         color: purple;
+         }
+         .css-accordion {
+         list-style-type: none;
+         counter-reset: li;
+         padding: 20px;
+         margin: 20px;
+         width: 100%;
+         border: 1px solid #dddddd;
+         background: #f4f4f4 url(data:image/png;base64,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) repeat top left;
+         /*---- End .accordion-item ----*/
+         }
+         .css-accordion .accordion-item {
+         counter-increment: li;
+         padding: 0;
+         margin: 0;
+         }
+         .css-accordion .accordion-item .item-content-container {
+         border-left: 10px solid purple;
+         padding: 6px 0;
+         margin: -2px 0 -2px 25px;
+         }
+         .css-accordion .accordion-item .item-content-container .item-content {
+         background: #eee;
+         padding: 0 1em;
+         overflow: hidden;
+         margin: 0 0 0 36px;
+         border-radius: 2px;
+         box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(255, 255, 255, 0.9);
+         }
+         .css-accordion .accordion-item .item-content-container .item-content p {
+         margin: 0.5em 0;
+         font-size: 14px;
+         text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+         }
+         .css-accordion .accordion-item input[type=radio] {
+         display: none;
+         /*---- End &:checked ----*/
+         }
+         .css-accordion .accordion-item input[type=radio] ~ .item-content-container {
+         overflow: hidden;
+         }
+         .css-accordion .accordion-item input[type=radio] ~ .item-content-container .item-content {
+         height: 0;
+         transition: all 0.3s linear;
+         }
+         .css-accordion .accordion-item input[type=radio]:checked ~ .item-content-container {
+         height: auto;
+         overflow: visible;
+         }
+         .css-accordion .accordion-item input[type=radio]:checked ~ .item-content-container .item-content {
+         height: 200px;
+         overflow-y: auto;
+         transition: all 0.5s linear;
+         }
+         .css-accordion .accordion-item input[type=radio]:checked + label {
+         color: purple;
+         }
+         .css-accordion .accordion-item input[type=radio]:checked + label:before {
+         background: #ffb3ff;
+         }
+      </style>
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+          <div class="col-sm-10">
+            <select name="status" id="input-status" class="form-control">
+              {% if status %}
+              <option value="1" selected="selected">{{ text_enabled }}</option>
+              <option value="0">{{ text_disabled }}</option>
+              {% else %}
+              <option value="1">{{ text_enabled }}</option>
+              <option value="0" selected="selected">{{ text_disabled }}</option>
+              {% endif %}
+            </select>
+          </div>
+        </div>
+      </form>
+      <ol class="css-accordion user-journey">
+         <li class="accordion-item stage-1">
+            <input type="radio" name="accordion-control" id="stage-1-control" checked="">
+            <label for="stage-1-control">Add Category</label>
+            <div class="item-content-container">
+               <div class="item-content">
+               <div class="panel-body">
+                 <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+                   <div class="form-group">
+                     <label class="col-sm-2 control-label" for="input-name">Category Name{{ entry_name }}</label>
+                     <div class="col-sm-10">
+                       <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                       {% if error_name %}
+                       <div class="text-danger">{{ error_name }}</div>
+                       {% endif %}
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label class="col-sm-2 control-label" for="input-banner">{{ entry_banner }}</label>
+                     <div class="col-sm-10">
+                       <select name="banner_id" id="input-banner" class="form-control">
+                         {% for banner in banners %}
+                         {% if banner.banner_id == banner_id %}
+                         <option value="{{ banner.banner_id }}" selected="selected">{{ banner.name }}</option>
+                         {% else %}
+                         <option value="{{ banner.banner_id }}">{{ banner.name }}</option>
+                         {% endif %}
+                         {% endfor %}
+                       </select>
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label class="col-sm-2 control-label" for="input-width">{{ entry_width }}</label>
+                     <div class="col-sm-10">
+                       <input type="text" name="width" value="{{ width }}" placeholder="{{ entry_width }}" id="input-width" class="form-control" />
+                       {% if error_width %}
+                       <div class="text-danger">{{ error_width }}</div>
+                       {% endif %}
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label class="col-sm-2 control-label" for="input-height">{{ entry_height }}</label>
+                     <div class="col-sm-10">
+                       <input type="text" name="height" value="{{ height }}" placeholder="{{ entry_height }}" id="input-height" class="form-control" />
+                       {% if error_height %}
+                       <div class="text-danger">{{ error_height }}</div>
+                       {% endif %}
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                     <div class="col-sm-10">
+                       <select name="status" id="input-status" class="form-control">
+                         {% if status %}
+                         <option value="1" selected="selected">{{ text_enabled }}</option>
+                         <option value="0">{{ text_disabled }}</option>
+                         {% else %}
+                         <option value="1">{{ text_enabled }}</option>
+                         <option value="0" selected="selected">{{ text_disabled }}</option>
+                         {% endif %}
+                       </select>
+                     </div>
+                   </div>
+                 </form>
+               </div>
+
+               </div>
+            </div>
+         </li>
+         <li class="accordion-item stage-1">
+            <input type="radio" name="accordion-control" id="stage-1-control" checked="">
+            <label for="stage-1-control">View Category</label>
+            <div class="item-content-container">
+               <div class="item-content">
+                  <p>Some exciting content about our general practices, etc.</p>
+               </div>
+            </div>
+         </li>
+         <li class="accordion-item stage-2">
+            <input type="radio" name="accordion-control" id="stage-2-control">
+            <label for="stage-2-control">Add Post</label>
+            <div class="item-content-container">
+               <div class="item-content">
+                  <p>Some exciting content about our general practices, etc.</p>
+                  <p>Some exciting content about our general practices, etc.</p>
+                  <p>Some exciting content about our general practices, etc.</p>
+                  <p>Some exciting content about our general practices, etc.</p>
+               </div>
+            </div>
+         </li>
+         <li class="accordion-item stage-1">
+            <input type="radio" name="accordion-control" id="stage-1-control" checked="">
+            <label for="stage-1-control">View Posts</label>
+            <div class="item-content-container">
+               <div class="item-content">
+                  <p>Some exciting content about our general practices, etc.</p>
+               </div>
+            </div>
+         </li>
+         <li class="accordion-item stage-3">
+            <input type="radio" name="accordion-control" id="stage-3-control">
+            <label for="stage-3-control">Comments</label>
+            <div class="item-content-container">
+               <div class="item-content">
+                  <p>Some exciting content about our general practices, etc.</p>
+               </div>
+            </div>
+         </li>
+         <li class="accordion-item stage-4">
+            <input type="radio" name="accordion-control" id="stage-4-control">
+            <label for="stage-4-control">Archive</label>
+            <div class="item-content-container">
+               <div class="item-content">
+                  <p>Some exciting content about our general practices, etc.</p>
+               </div>
+            </div>
+         </li>
+      </ol>
+
+</div>
+{{ footer }}

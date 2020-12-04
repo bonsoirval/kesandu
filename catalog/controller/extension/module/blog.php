@@ -1,5 +1,5 @@
 <?php
-class ControllerExtensionModuleBlogA extends Controller {
+class ControllerExtensionModuleBlog extends Controller {
 	private $error = array();
 
 	public function index() {

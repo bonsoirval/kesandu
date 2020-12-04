@@ -1,6 +1,43 @@
 <?php
-class ModelExtensionModuleTestimonial extends Model
+class ModelExtensionModuleBlog extends Model
 {
+    public function install()
+    {
+      /*
+      CREATE TABLE `kesandus`.`oc_blog_category` (
+      `blog_category_id` INT NOT NULL AUTO_INCREMENT,
+      `category_name` VARCHAR(20) NULL,
+      `oc_blog_category_description` TEXT NULL,
+      `oc_blog_category_author_id` INT NULL,
+      `oc_blog_category_date_created` VARCHAR(45) NULL,
+      PRIMARY KEY (`blog_category_id`),
+      UNIQUE INDEX `blog_category_id_UNIQUE` (`blog_category_id` ASC),
+      UNIQUE INDEX `category_name_UNIQUE` (`category_name` ASC));
+      */
+      //$this->db->query("INSERT INTO " . DB_PREFIX . "testimonial SET sort_order = '" . (int) $data['sort_order'] . "', status = '" . (int) $data['status'] . "', date_modified = NOW(), date_added = NOW()");
+      /*$this->db->query("DROP TABLE " . DB_PREFIX . "blog_category(
+      `blog_category_id` INT NOT NULL AUTO_INCREMENT,
+      `category_name` VARCHAR(20) NULL,
+      `oc_blog_category_description` TEXT NULL,
+      `oc_blog_category_author_id` INT NULL,
+      `oc_blog_category_date_created` VARCHAR(45) NULL,
+      PRIMARY KEY (`blog_category_id`),
+      UNIQUE INDEX `blog_category_id_UNIQUE` (`blog_category_id` ASC),
+      UNIQUE INDEX `category_name_UNIQUE` (`category_name` ASC));");
+      */
+      //$blog_category_id = $this->db->getLastId();
+      //var_dump($blog_category_id);
+      //exit();
+      exit("Insalling?");
+      $this->db->query("
+  		CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "blog_category` (
+  		  `ip` varchar(40) NOT NULL,
+  		  `date_added` datetime NOT NULL,
+  		  PRIMARY KEY (`ip`)
+  		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  		");
+    }
+
     /** addTestimonial method is to add testimonial which is called from controller like $this->model_extension_module_testimonial->addTestimonial($this->request->post);. Data is inserted in the oc_testimonial table, oc_testimonail_description, oc_testimonial_to_store and oc_testimonial_to_layout and cache is cleared for the testimonial variable ***/
     public function addTestimonial($data)
     {
